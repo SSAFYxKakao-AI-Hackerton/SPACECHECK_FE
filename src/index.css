@@ -1,1 +1,150 @@
 @import 'tailwindcss';
+
+@theme {
+  /* Blue */
+  --color-blue-50: #f4f7fe;
+  --color-blue-100: #c9d7fa;
+  --color-blue-200: #a2bcf7;
+  --color-blue-300: #789ef3;
+  --color-blue-400: #4e80ef;
+  --color-blue-500: #2563ea;
+  --color-blue-600: #1f4fbd;
+  --color-blue-700: #163b8c;
+  --color-blue-800: #0f285e;
+  --color-blue-900: #06142f;
+ 
+  /* Green */
+  --color-green-50: #f3f9f5;
+  --color-green-100: #c5e8d2;
+  --color-green-200: #9bd7b1;
+  --color-green-300: #6fc68f;
+  --color-green-400: #42b46c;
+  --color-green-500: #17a34a;
+  --color-green-600: #12823a;
+  --color-green-700: #0d622b;
+  --color-green-800: #09411e;
+  --color-green-900: #04210f;
+ 
+  /* Red */
+  --color-red-50: #fef5f6;
+  --color-red-100: #fad0d1;
+  --color-red-200: #f7afb0;
+  --color-red-300: #f58b8b;
+  --color-red-400: #f26868;
+  --color-red-500: #ee4444;
+  --color-red-600: #be3636;
+  --color-red-700: #8f2829;
+  --color-red-800: #601c1b;
+  --color-red-900: #300e0d;
+ 
+  /* Orange */
+  --color-orange-50: #fdf8f4;
+  --color-orange-100: #f6dcc1;
+  --color-orange-200: #efc593;
+  --color-orange-300: #e7ab65;
+  --color-orange-400: #e09135;
+  --color-orange-500: #d87706;
+  --color-orange-600: #ae5e05;
+  --color-orange-700: #824705;
+  --color-orange-800: #563001;
+  --color-orange-900: #2a1800;
+ 
+  /* Gray */
+  --color-gray-50: #f8f8f8;
+  --color-gray-100: #dcdcde;
+  --color-gray-200: #c2c1c6;
+  --color-gray-300: #a8a7ad;
+  --color-gray-400: #8c8d92;
+  --color-gray-500: #717179;
+  --color-gray-600: #5a5a62;
+  --color-gray-700: #454449;
+  --color-gray-800: #2d2c31;
+  --color-gray-900: #171717;
+ 
+  /* Natural */
+  --color-natural-50: #f3f3f3;
+  --color-natural-100: #c2c2c2;
+  --color-natural-200: #959595;
+  --color-natural-300: #666668;
+  --color-natural-400: #383838;
+  --color-natural-500: #09090b;
+  --color-natural-600: #070709;
+  --color-natural-700: #050507;
+  --color-natural-800: #040404;
+  --color-natural-900: #020202;
+ 
+  /* Purple */
+  --color-purple-50: #fbf8ff;
+  --color-purple-100: #e8e2fe;
+  --color-purple-200: #d9cdfd;
+  --color-purple-300: #c8b7fd;
+  --color-purple-400: #b8a1fb;
+  --color-purple-500: #a78bfa;
+  --color-purple-600: #866fc9;
+  --color-purple-700: #645397;
+  --color-purple-800: #433863;
+  --color-purple-900: #211c32;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: var(--color-gray-900);
+
+  --card: #ffffff;
+  --card-foreground: var(--color-gray-900);
+
+  --muted: var(--color-gray-100);
+  --muted-foreground: var(--color-gray-500);
+
+  --primary: var(--color-blue-500);
+  --primary-foreground: #ffffff;
+
+  --secondary: var(--color-gray-100);
+  --secondary-foreground: var(--color-gray-900);
+
+  --accent: var(--color-purple-500);
+  --accent-foreground: #ffffff;
+
+  --border: var(--color-gray-200);
+  --input: var(--color-gray-200);
+  --ring: var(--color-blue-500);
+
+  --destructive: var(--color-red-500);
+  --destructive-foreground: #ffffff;
+
+  --success: var(--color-green-500);
+  --success-foreground: #ffffff;
+
+  --warning: var(--color-orange-500);
+  --warning-foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
