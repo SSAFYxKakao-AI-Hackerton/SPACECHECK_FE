@@ -9,38 +9,105 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './__root'
+import { Route as LayoutRouteImport } from './_layout'
 import { Route as IndexRouteImport } from './index'
+import { Route as LayoutSolutionRouteImport } from './_layout/solution'
+import { Route as LayoutSearchRouteImport } from './_layout/search'
+import { Route as LayoutResultRouteImport } from './_layout/result'
+import { Route as LayoutMapRouteImport } from './_layout/map'
+import { Route as LayoutInputRouteImport } from './_layout/input'
 
+const LayoutRoute = LayoutRouteImport.update({
+  id: '/_layout',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LayoutSolutionRoute = LayoutSolutionRouteImport.update({
+  id: '/solution',
+  path: '/solution',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutSearchRoute = LayoutSearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutResultRoute = LayoutResultRouteImport.update({
+  id: '/result',
+  path: '/result',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutMapRoute = LayoutMapRouteImport.update({
+  id: '/map',
+  path: '/map',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutInputRoute = LayoutInputRouteImport.update({
+  id: '/input',
+  path: '/input',
+  getParentRoute: () => LayoutRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/input': typeof LayoutInputRoute
+  '/map': typeof LayoutMapRoute
+  '/result': typeof LayoutResultRoute
+  '/search': typeof LayoutSearchRoute
+  '/solution': typeof LayoutSolutionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/input': typeof LayoutInputRoute
+  '/map': typeof LayoutMapRoute
+  '/result': typeof LayoutResultRoute
+  '/search': typeof LayoutSearchRoute
+  '/solution': typeof LayoutSolutionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_layout': typeof LayoutRouteWithChildren
+  '/_layout/input': typeof LayoutInputRoute
+  '/_layout/map': typeof LayoutMapRoute
+  '/_layout/result': typeof LayoutResultRoute
+  '/_layout/search': typeof LayoutSearchRoute
+  '/_layout/solution': typeof LayoutSolutionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/input' | '/map' | '/result' | '/search' | '/solution'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/input' | '/map' | '/result' | '/search' | '/solution'
+  id:
+    | '__root__'
+    | '/'
+    | '/_layout'
+    | '/_layout/input'
+    | '/_layout/map'
+    | '/_layout/result'
+    | '/_layout/search'
+    | '/_layout/solution'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LayoutRoute: typeof LayoutRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/_layout': {
+      id: '/_layout'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof LayoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +115,66 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_layout/solution': {
+      id: '/_layout/solution'
+      path: '/solution'
+      fullPath: '/solution'
+      preLoaderRoute: typeof LayoutSolutionRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/search': {
+      id: '/_layout/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof LayoutSearchRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/result': {
+      id: '/_layout/result'
+      path: '/result'
+      fullPath: '/result'
+      preLoaderRoute: typeof LayoutResultRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/map': {
+      id: '/_layout/map'
+      path: '/map'
+      fullPath: '/map'
+      preLoaderRoute: typeof LayoutMapRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/input': {
+      id: '/_layout/input'
+      path: '/input'
+      fullPath: '/input'
+      preLoaderRoute: typeof LayoutInputRouteImport
+      parentRoute: typeof LayoutRoute
+    }
   }
 }
 
+interface LayoutRouteChildren {
+  LayoutInputRoute: typeof LayoutInputRoute
+  LayoutMapRoute: typeof LayoutMapRoute
+  LayoutResultRoute: typeof LayoutResultRoute
+  LayoutSearchRoute: typeof LayoutSearchRoute
+  LayoutSolutionRoute: typeof LayoutSolutionRoute
+}
+
+const LayoutRouteChildren: LayoutRouteChildren = {
+  LayoutInputRoute: LayoutInputRoute,
+  LayoutMapRoute: LayoutMapRoute,
+  LayoutResultRoute: LayoutResultRoute,
+  LayoutSearchRoute: LayoutSearchRoute,
+  LayoutSolutionRoute: LayoutSolutionRoute,
+}
+
+const LayoutRouteWithChildren =
+  LayoutRoute._addFileChildren(LayoutRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LayoutRoute: LayoutRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
