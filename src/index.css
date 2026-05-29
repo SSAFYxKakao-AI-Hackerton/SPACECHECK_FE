@@ -84,6 +84,9 @@
   --color-purple-700: #645396;
   --color-purple-800: #433864;
   --color-purple-900: #211c32;
+
+  /* Font */
+  --font-sans: 'Noto Sans KR', ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
@@ -145,6 +148,6 @@
 
 @layer base {
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground font-sans antialiased;
   }
 }

@@ -8,6 +8,9 @@ dependencies:
   '@fontsource-variable/geist':
     specifier: ^5.2.9
     version: 5.2.9
+  '@fontsource/noto-sans-kr':
+    specifier: ^5.2.9
+    version: 5.2.9
   '@tailwindcss/vite':
     specifier: ^4.3.0
     version: 4.3.0(vite@8.0.14)
@@ -371,6 +374,10 @@ packages:
 
   /@fontsource-variable/geist@5.2.9:
     resolution: {integrity: sha512-TP+QSBG3wxKGPE33CbMy/L0Nu3qvJ6Fy81Yc4LnQ95xH+i+cfEp8fyU8/kfV14YwszxIFPhnoMTbjL71waVpyQ==}
+    dev: false
+
+  /@fontsource/noto-sans-kr@5.2.9:
+    resolution: {integrity: sha512-pbF8F0rUzKkDmnk/KYGAbxjgW4TrIHdFKnV6OQ+kUC9ELCn5utrAURcEgMqq3J9SRX+FvjOz+aBCmfcC8/r7cw==}
     dev: false
 
   /@humanfs/core@0.19.2:
